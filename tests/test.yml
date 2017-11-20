@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: True
+  roles:
+    - role: ansible-supervisord-config
+      app_name: traveloka
+      supervisord_config_location: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
+      supervisord_programs:
+        app:
+          program_name: "{{ app_name }}"
+          user: "ubuntu"
+          environment:  TRAVELOKA_ENV=prod
+          command: "/bin/{{ app_name }}"
+          directory: "/opt/traveloka/"
+          autostart: "true"
+          autorestart: "true"
+          redirect_stderr: "true"
+          stdout_logfile: "/opt/traveloka/log/{{ app_name }}_console_out.log"
+          stderr_logfile : "/opt/traveloka/log/{{ app_name }}_console_err.log"
