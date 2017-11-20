@@ -1,6 +1,8 @@
 supervisord_config
 =================
 
+![Build Status](https://travis-ci.org/traveloka/ansible-supervisord-config.svg?branch=master)
+
 This roles generate configurations files for supervisord and store them in
 /etc/supervisor/conf.d.
 
