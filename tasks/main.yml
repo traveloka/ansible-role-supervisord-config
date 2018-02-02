@@ -10,6 +10,7 @@
 
 - name: Print supervisor applications' config
   debug:
-    msg: "{{ lookup('file',item) }}"
+    msg: "{{ lookup('file',item).split('\n') }}"
+    verbosity: 2
   with_fileglob:
     - "{{ supervisord_config_location }}/*.conf"
