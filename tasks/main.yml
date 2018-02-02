@@ -2,8 +2,13 @@
 # Copy the supervisor.conf.j2template in /etc/supervisor/conf.d
 # for each supervisord_programs configured.
 #################################################################
-- name: Setup supervisor config
+- name: Set supervisor applications' config
   template:
     src: supervisor.conf.j2
     dest: "{{ supervisord_config_location }}/{{ item.value['program_name'] }}.conf"
   with_dict: "{{ supervisord_programs }}"
+
+- name: Print supervisor applications' config
+  debug:
+    msg: "{{ item }}"
+  with_fileglob: "{{ supervisord_config_location }}/*.conf"
