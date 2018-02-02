@@ -9,7 +9,7 @@
         app:
           program_name: "{{ app_name }}"
           user: "ubuntu"
-          environment:  TRAVELOKA_ENV=prod
+          environment:  TRAVELOKA_ENV=production
           command: "/bin/{{ app_name }}"
           directory: "/opt/traveloka/"
           autostart: "true"
